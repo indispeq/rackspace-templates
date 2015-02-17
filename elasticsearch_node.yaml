@@ -85,7 +85,7 @@ resources:
       name: encrypted_volume
       metadata:
         rax-heat: { get_param: "OS::stack_id" }
-      size: 10
+      size: 75
       description: Created from the kitchen_sink test Heat template
 
   attach_devops_vol:
