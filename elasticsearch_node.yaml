@@ -79,6 +79,21 @@ resources:
       - uuid: "11111111-1111-1111-1111-111111111111"
       - uuid: { get_param: es_network_id }
 
+  devops_volume:
+    type: OS::Cinder::Volume
+    properties:
+      name: encrypted_volume
+      metadata:
+        rax-heat: { get_param: "OS::stack_id" }
+      size: 10
+      description: Created from the kitchen_sink test Heat template
+
+  attach_devops_vol:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      instance_uuid: { get_resource: es_server }
+      volume_id: { get_resource: devops_volume }
+
   es_setup:
     type: "OS::Heat::ChefSolo"
     depends_on: es_server
