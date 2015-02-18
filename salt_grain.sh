@@ -8,7 +8,6 @@ grains:
 EOF
 
 array=( $3 )
-echo ${array[1]}
 
 for role in "${array[@]}"
 do
