@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 cat <<EOF >/etc/salt/minion
-master: $1 
+master: $1
 grains:
   env: $2
-  roles: 
+  roles:
 EOF
 
-roles=($3)
+array=( $3 )
+echo ${array[1]}
 
-for role in "${roles[@]}"
+for role in "${array[@]}"
 do
         echo "    - ${role}" >> /etc/salt/minion
 done
