@@ -6,6 +6,6 @@ runcmd:
   - curl -L https://raw.githubusercontent.com/indispeq/rackspace-templates/master/salt_grain.sh -o salt_grain.sh
   - curl -L https://bootstrap.saltstack.com -o install_salt.sh
   - sudo sh install_salt.sh git v2014.1.13
-  - [ bash, salt_grain.sh, w.x.y.z, production, 'role1 role2 role3' ]
+  - [ bash, salt_grain.sh, w.x.y.z, environemnt, 'role1 role2' ]
   - service salt-minion restart
 

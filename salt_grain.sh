@@ -2,6 +2,7 @@
 
 cat <<EOF >/etc/salt/minion
 master: $1
+id: `hostname`
 grains:
   env: $2
   roles:
