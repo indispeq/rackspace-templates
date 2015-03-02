@@ -13,3 +13,13 @@ exec git-update-server-info
 EOF'
 su git -c 'chmod +x /var/git/novasalt/hooks/post-update'
 
+cat <<EOF >/etc/salt/master.d/reactor.conf
+reactor:
+  - 'salt/auth':
+    - /srv/reactor/auth-pending.sls
+  - 'salt/minion/*/start':
+    - /srv/reactor/auth-complete.sls
+  - 'minion_start':
+    - /srv/reactor/sync_grains.sls
+EOF
+service salt-master restart
