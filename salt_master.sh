@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-sudo -u git -c 'git init --bare /var/git/novasalt'
+su git -c 'git init --bare /var/git/novasalt'
 sudo git clone /var/git/novasalt /srv
-sudo -u git -c 'cat <<EOF >/var/git/novasalt/hooks/post-update'
+su git -c 'cat <<EOF >/var/git/novasalt/hooks/post-update'
 \#!/bin/sh
 exec git update-server-info
 cd /srv
