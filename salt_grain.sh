@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 cat <<EOF >/etc/salt/minion
-master: $1
+master: `cat /tmp/saltmaster.txt` 
 id: `hostname`
 grains:
-  env: $2
+  env: `cat /tmp/environment.txt`
   roles:
 EOF
 
-array=( $3 )
+array=( `cat /tmp/roles.txt` )
 
 for role in "${array[@]}"
 do
