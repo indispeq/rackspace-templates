@@ -8,7 +8,7 @@ grains:
   roles:
 EOF
 
-array=( `cat /tmp/roles.txt` )
+array=( `cat /tmp/roles.txt | tr ',' ' '` )
 
 for role in "${array[@]}"
 do
